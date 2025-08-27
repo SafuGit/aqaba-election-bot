@@ -5,6 +5,8 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
+import keep_alive
+
 load_dotenv()
 
 intents = discord.Intents.default()
@@ -164,4 +166,6 @@ async def ping(ctx):
 async def hello(ctx):
   await ctx.send(f"OK BRO, {ctx.author.mention}! YOU WANT AN ELECTION OR NOT? NO HELLOS, JUST ELECTION")
 
-bot.run(os.getenv('BOT_TOKEN'))
+if __name__ == "__main__":
+    keep_alive.keep_alive()
+    bot.run(os.getenv("BOT_TOKEN"))
